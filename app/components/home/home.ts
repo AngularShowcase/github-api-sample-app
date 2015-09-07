@@ -1,4 +1,5 @@
 import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 import UserRepo from '../../services/repositories/user_repo';
 import User from '../../services/models/user';
 
@@ -7,7 +8,7 @@ import User from '../../services/models/user';
 })
 @View({
   templateUrl: './components/home/home.html?v=<%= VERSION %>',
-  directives: [CORE_DIRECTIVES]
+  directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class Home {
   private loading:boolean;

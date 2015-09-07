@@ -71,7 +71,8 @@ var PATH = {
       APP_SRC + '/system.config.js',
       ANGULAR_BUNDLES + '/angular2.dev.js',
       ANGULAR_BUNDLES + '/router.dev.js',
-      ANGULAR_BUNDLES + '/http.dev.js'
+      ANGULAR_BUNDLES + '/http.dev.js',
+      './node_modules/bootstrap/dist/css/bootstrap.css'
     ]
   }
 };
@@ -147,8 +148,13 @@ gulp.task('build.app.dev', function (done) {
   runSequence('clean.app.dev', 'build.assets.dev', 'build.index.dev', done);
 });
 
+gulp.task('build.fonts.dev', function () {
+  return gulp.src(['./node_modules/bootstrap/fonts/**'])
+      .pipe(gulp.dest('./dist/dev/fonts/'));
+});
+
 gulp.task('build.dev', function (done) {
-  runSequence('clean.dev', 'build.lib.dev', 'build.app.dev', done);
+  runSequence('clean.dev', 'build.lib.dev', 'build.app.dev', 'build.fonts.dev', done);
 });
 
 // --------------
