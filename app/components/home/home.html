@@ -1,0 +1,11 @@
+<div [hidden]="!loading">Loading...</div>
+<input type="text" #currentuser><button (click)="addUser(currentuser)">Add</button>
+
+<table>
+    <tr *ng-for="#user of getAll()">
+        <td><img [src]="user.avatarUrl" width="50"></td>
+        <td>{{user.username}}</td>
+        <td>{{user.name}}</td>
+        <td><button (click)="remove(user)">Remove</button></td>
+    </tr>
+</table>
