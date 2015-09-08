@@ -115,3 +115,25 @@
 .btn-pref .btn {
   -webkit-border-radius:0 !important;
 }
+
+.tabs {
+}
+
+.tabs-header {
+  list-style: none;
+  padding: 0px;
+}
+
+.tabs-header li {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 3px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-right: -1px;
+  cursor: pointer;
+}
+
+.tabs-content {
+
+}
