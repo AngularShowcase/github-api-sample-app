@@ -9,15 +9,12 @@ import {Host, Directive, Component, View, CORE_DIRECTIVES} from 'angular2/angula
       <ul class="tabs-header">
         <li *ng-for="#tab of tabs; #index = index" (click)="select(index)">{{tab.title}}</li>
       </ul>
-      <div class="tabs-content">
-      </div>
+      <ng-content></ng-content>
     </div>
   `,
   directives: [CORE_DIRECTIVES]
 })
 export class Tabs {
-  private titles:string[];
-  private contents:string[];
   private selectedIdx:number;
   private tabs:Tab[];
   constructor() {
@@ -28,17 +25,33 @@ export class Tabs {
     this.selectedIdx = idx;
   }
   addTab(tab:Tab) {
+    let idx = this.tabs.length;
     this.tabs.push(tab);
+    return idx;
+  }
+  getSelectedIndex() {
+    return this.selectedIdx;
   }
 }
 
-@Directive({
+@Component({
   selector: 'tab',
   properties: ['title']
 })
+@View({
+  template: `
+    <div [hidden]="isActive()">
+      <ng-content></ng-content>
+    </div>
+  `
+})
 export class Tab {
   public title:string;
-  constructor(@Host() parent:Tabs) {
-    parent.addTab(this);
+  public index:number;
+  constructor(@Host() private parent:Tabs) {
+    this.index = parent.addTab(this);
+  }
+  isActive():boolean {
+    return this.parent.getSelectedIndex() === this.index;
   }
 }
