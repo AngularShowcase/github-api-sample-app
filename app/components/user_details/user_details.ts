@@ -5,26 +5,25 @@ import UserRepo from '../../services/repositories/user_repo';
 import User from '../../services/models/user';
 
 @Component({
-    selector: 'user-details'
+  selector: 'user-details'
 })
 @View({
-    templateUrl: './components/user_details/user_details.html'
+  templateUrl: './components/user_details/user_details.html'
 })
 export class UserDetails {
-    private user:User;
-    private active:string;
-    constructor(private repo:UserRepo, params:RouteParams) {
-        let username = params.get('username');
-        this.repo.getUser(username)
-            .then((u:User) => {
-                this.user = u;
-            })
-    }
-    setActive(id) {
-      this.active = id;
-    }
-    getActive() {
-        return this.active;
-    }
-
+  private user:User;
+  private active:string;
+  constructor(private repo:UserRepo, params:RouteParams) {
+    let username = params.get('username');
+    this.repo.getUser(username)
+      .then((u:User) => {
+        this.user = u;
+      })
+  }
+  setActive(id) {
+    this.active = id;
+  }
+  getActive() {
+    return this.active;
+  }
 }
