@@ -1,11 +1,5 @@
 <div [hidden]="!loading">Loading...</div>
 <input type="text" #currentuser><button class="btn btn-primary" (click)="addUser(currentuser)">Add</button>
-
-<tabs>
-  <tab title="Star">Some star</tab>
-  <tab title="Repositories">Some repos</tab>
-</tabs>
-
 <table class="table">
     <tr *ng-for="#user of getAll()">
         <td>

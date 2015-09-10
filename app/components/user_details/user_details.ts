@@ -4,11 +4,14 @@ import {RouteParams} from 'angular2/router';
 import UserRepo from '../../services/repositories/user_repo';
 import User from '../../services/models/user';
 
+import {Tabs, Tab} from '../tabs/tabs';
+
 @Component({
   selector: 'user-details'
 })
 @View({
-  templateUrl: './components/user_details/user_details.html'
+  templateUrl: './components/user_details/user_details.html',
+  directives: [Tabs, Tab]
 })
 export class UserDetails {
   private user:User;
