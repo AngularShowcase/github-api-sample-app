@@ -40,7 +40,7 @@ export class Tabs {
 })
 @View({
   template: `
-    <div [hidden]="isActive()">
+    <div [hidden]="!isActive()">
       <ng-content></ng-content>
     </div>
   `
@@ -52,6 +52,7 @@ export class Tab {
     this.index = parent.addTab(this);
   }
   isActive():boolean {
+    console.log(this.title, this.parent.getSelectedIndex() === this.index);
     return this.parent.getSelectedIndex() === this.index;
   }
 }
